@@ -20,6 +20,10 @@
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/logotip4ik/nuxt-cloudflare-headers"
+  },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.4"
   },
