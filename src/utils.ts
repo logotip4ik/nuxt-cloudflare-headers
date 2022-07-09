@@ -1,8 +1,4 @@
-import { useLogger } from "@nuxt/kit";
-
 import { ModuleOptions } from "./types";
-
-export const logger = useLogger("cloudflare-headers");
 
 export const headersStorageKey = "cloudflare:headers";
 

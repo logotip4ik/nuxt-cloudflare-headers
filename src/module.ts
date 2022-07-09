@@ -1,7 +1,14 @@
-import { defineNuxtModule, createResolver, resolveModule } from "@nuxt/kit";
+import {
+  defineNuxtModule,
+  createResolver,
+  resolveModule,
+  useLogger,
+} from "@nuxt/kit";
 
 import { ModuleOptions } from "./types";
-import { headersStorageKey, logger } from "./utils";
+import { headersStorageKey } from "./utils";
+
+const logger = useLogger("cloudflare-headers");
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
