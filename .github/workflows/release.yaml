@@ -26,4 +26,4 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         with:
           release-type: node
-          package-name: @logotip4ik_/nuxt-cloudflare-headers
+          package-name: "@logotip4ik_/nuxt-cloudflare-headers"
