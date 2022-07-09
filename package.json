@@ -12,7 +12,8 @@
   "main": "./dist/module.cjs",
   "types": "./dist/types.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "*.d.ts"
   ],
   "scripts": {
     "prepack": "nuxt-module-build",
@@ -29,7 +30,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.4",
-    "defu": "^6.0.0"
+    "defaults-deep": "^0.2.4"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
