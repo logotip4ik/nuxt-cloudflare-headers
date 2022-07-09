@@ -37,6 +37,7 @@
     "eslint": "latest",
     "jest": "^28.1.2",
     "nuxt": "^3.0.0-rc.4",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.5"
   }
 }
