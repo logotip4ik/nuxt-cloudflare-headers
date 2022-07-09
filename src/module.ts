@@ -27,9 +27,6 @@ export default defineNuxtModule<ModuleOptions>({
     const resolveRuntimeModule = (path: string) =>
       resolveModule(path, { paths: resolve("./runtime") });
 
-    // I found that this is probably the only method to share data between module and server route
-    nuxt.options.runtimeConfig[name] = headers;
-
     nuxt.options.build.transpile = nuxt.options.build.transpile || [];
     nuxt.options.build.transpile.push(resolve("./runtime"));
 
@@ -37,6 +34,14 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.alias = nuxt.options.alias || {};
     nuxt.options.alias["#utils"] = resolve("./runtime/utils");
     nuxt.options.alias["#package"] = resolve("../package");
+
+    nuxt.hook("nitro:build:before", async (nitroConfig) => {
+      // NOTE: just a name wont work, unstorage just will not create an item with such a key
+      // the name must have some prefix
+      const cacheKey = `cache:${name}`;
+
+      await nitroConfig.storage.setItem(cacheKey, headers);
+    });
 
     nuxt.hook("nitro:config", (nitroConfig) => {
       // Adding utils as external to nitro, so it will know where to import
