@@ -1,6 +1,6 @@
 {
   "name": "@logotip4ik_/nuxt-cloudflare-headers",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "type": "module",
   "exports": {
