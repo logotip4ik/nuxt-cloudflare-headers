@@ -31,6 +31,7 @@
   "devDependencies": {
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
+    "@types/jest": "^28.1.4",
     "bumpp": "^8.2.1",
     "eslint": "latest",
     "jest": "^28.1.2",
