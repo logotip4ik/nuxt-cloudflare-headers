@@ -42,7 +42,7 @@ export default defineNuxtModule<ModuleOptions>({
 
       if (!nuxt.options.dev) {
         nitroConfig.prerender.routes.push("/_headers");
-        logger.success("added `_headers` route to prerender");
+        logger.success("Added `_headers` route to prerender");
       }
     });
 
