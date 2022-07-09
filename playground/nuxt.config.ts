@@ -1,11 +1,10 @@
-import { defineNuxtConfig } from 'nuxt'
-import MyModule from '..'
+import { defineNuxtConfig } from "nuxt";
+import cloudflareHeaders from "..";
 
 export default defineNuxtConfig({
-  modules: [
-    MyModule
-  ],
-  myModule: {
-    addPlugin: true
-  }
-})
+  modules: [cloudflareHeaders],
+
+  cloudflareHeaders: {
+    "/*": [{ "some-cool": "header " }],
+  },
+});
