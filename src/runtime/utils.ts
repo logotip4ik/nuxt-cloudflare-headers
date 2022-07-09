@@ -1,6 +1,4 @@
-import { ModuleOptions } from "./types";
-
-export const headersStorageKey = "cloudflare:headers";
+import { ModuleOptions } from "../types";
 
 export function stringify(obj: ModuleOptions) {
   let result = "";
