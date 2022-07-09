@@ -1,12 +1,16 @@
-// @ts-ignore
 import { defineEventHandler } from "h3";
-import { stringify, headersStorageKey } from "../../utils";
+
+// @ts-ignore
+import { stringify } from "#utils";
+// @ts-ignore
+import { name } from "#package";
 
 import { useRuntimeConfig } from "#imports";
 
 export default defineEventHandler(({ res }) => {
   const config = useRuntimeConfig();
-  const headers = config[headersStorageKey] || {};
+
+  const headers = config[name] || {};
 
   const headersString = stringify(headers);
 
