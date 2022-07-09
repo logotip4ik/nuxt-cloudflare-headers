@@ -4,7 +4,7 @@ import {
   resolveModule,
   useLogger,
 } from "@nuxt/kit";
-import defu from "defu";
+import { defu } from "defu";
 
 import { ModuleOptions } from "./types";
 import { headersStorageKey } from "./utils";
