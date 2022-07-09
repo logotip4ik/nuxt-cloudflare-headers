@@ -20,7 +20,7 @@
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "release": "bumpp",
-    "test": "jest"
+    "test": "ts-jest"
   },
   "repository": {
     "type": "git",
