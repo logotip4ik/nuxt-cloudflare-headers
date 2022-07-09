@@ -6,6 +6,7 @@ import {
 } from "@nuxt/kit";
 import { defu } from "defu";
 
+import { name, version } from "../package.json";
 import { ModuleOptions } from "./types";
 import { headersStorageKey } from "./utils";
 
@@ -13,12 +14,12 @@ const logger = useLogger("cloudflare-headers");
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: "nuxt-cloudflare-headers",
+    name,
+    version,
     configKey: "cloudflareHeaders",
     compatibility: { nuxt: "^3.0.0" },
   },
   setup(options = {}, nuxt) {
-    // @ts-ignore
     const headers = defu(nuxt.options.cloudflareHeaders, options);
 
     const { resolve } = createResolver(import.meta.url);
