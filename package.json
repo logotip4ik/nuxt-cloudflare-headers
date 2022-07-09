@@ -1,5 +1,5 @@
 {
-  "name": "@logotip4ik_/cloudflare-headers",
+  "name": "@logotip4ik_/nuxt-cloudflare-headers",
   "version": "0.0.0",
   "license": "MIT",
   "type": "module",
