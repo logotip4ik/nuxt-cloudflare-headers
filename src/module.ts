@@ -16,14 +16,13 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: "cloudflareHeaders",
     compatibility: { nuxt: "^3.0.0" },
   },
-  async setup(options = {}, nuxt) {
+  setup(options = {}, nuxt) {
     const headers = { ...nuxt.options.cloudflareHeaders, ...options };
 
     const { resolve } = createResolver(import.meta.url);
     const resolveRuntimeModule = (path: string) =>
       resolveModule(path, { paths: resolve("./runtime") });
 
-    nuxt.options.runtimeConfig = nuxt.options.runtimeConfig || {};
     nuxt.options.runtimeConfig[headersStorageKey] = headers;
 
     nuxt.hook("nitro:config", (nitroConfig) => {
