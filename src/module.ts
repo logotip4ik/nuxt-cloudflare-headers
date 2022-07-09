@@ -20,7 +20,8 @@ export default defineNuxtModule<ModuleOptions>({
     compatibility: { nuxt: "^3.0.0" },
   },
   setup(options = {}, nuxt) {
-    const headers = defu(nuxt.options.cloudflareHeaders, options);
+    // @ts-ignore
+    const headers = defu(nuxt.options.cloudflareHeaders || {}, options);
 
     const { resolve } = createResolver(import.meta.url);
     const resolveRuntimeModule = (path: string) =>
