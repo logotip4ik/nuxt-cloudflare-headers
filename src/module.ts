@@ -7,8 +7,8 @@ import {
 import { defu } from "defu";
 
 import { name, version } from "../package.json";
-import { ModuleOptions } from "./types";
-import { headersStorageKey } from "./utils";
+import { ModuleOptions } from "./runtime/types";
+import { headersStorageKey } from "./runtime/utils";
 
 const logger = useLogger("cloudflare-headers");
 

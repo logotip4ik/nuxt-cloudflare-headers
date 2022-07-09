@@ -1,5 +1,5 @@
-import { ModuleOptions } from "../src/types";
-import { stringify } from "../src/utils";
+import { ModuleOptions } from "../src/runtime/types";
+import { stringify } from "../src/runtime/utils";
 
 const tests: { data: ModuleOptions; result: string }[] = [
   {

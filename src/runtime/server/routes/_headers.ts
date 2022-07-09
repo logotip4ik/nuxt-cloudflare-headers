@@ -1,10 +1,10 @@
 // @ts-ignore
-import { useRuntimeConfig } from "#imports";
 import { defineEventHandler } from "h3";
+import { stringify, headersStorageKey } from "../../utils";
 
-import { stringify, headersStorageKey } from "../../../utils";
+import { useRuntimeConfig } from "#imports";
 
-export default defineEventHandler(async ({ res }) => {
+export default defineEventHandler(({ res }) => {
   const config = useRuntimeConfig();
   const headers = config[headersStorageKey] || {};
 
