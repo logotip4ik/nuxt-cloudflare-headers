@@ -1,24 +1,41 @@
-import { resolve } from 'path'
-import { fileURLToPath } from 'url'
-import { defineNuxtModule, addPlugin } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, resolveModule } from "@nuxt/kit";
 
-export interface ModuleOptions {
-  addPlugin: boolean
-}
+import { ModuleOptions } from "./types";
+import { headersStorageKey, logger } from "./utils";
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'my-module',
-    configKey: 'myModule'
+    name: "nuxt-cloudflare-headers",
+    configKey: "cloudflareHeaders",
+    compatibility: { nuxt: "^3.0.0" },
   },
-  defaults: {
-    addPlugin: true
+  async setup(options = {}, nuxt) {
+    const headers = { ...nuxt.options.cloudflareHeaders, ...options };
+
+    const { resolve } = createResolver(import.meta.url);
+    const resolveRuntimeModule = (path: string) =>
+      resolveModule(path, { paths: resolve("./runtime") });
+
+    nuxt.options.runtimeConfig = nuxt.options.runtimeConfig || {};
+    nuxt.options.runtimeConfig[headersStorageKey] = headers;
+
+    nuxt.hook("nitro:config", (nitroConfig) => {
+      nitroConfig.prerender = nitroConfig.prerender || {};
+      nitroConfig.prerender.routes = nitroConfig.prerender.routes || [];
+      nitroConfig.handlers = nitroConfig.handlers || [];
+
+      nitroConfig.handlers.push({
+        method: "get",
+        route: "/_headers",
+        handler: resolveRuntimeModule("./server/routes/_headers"),
+      });
+
+      if (!nuxt.options.dev) {
+        nitroConfig.prerender.routes.push("/_headers");
+        logger.success("added `_headers` route to prerender");
+      }
+    });
+
+    logger.success("Added `_headers` route handler");
   },
-  setup (options, nuxt) {
-    if (options.addPlugin) {
-      const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
-      nuxt.options.build.transpile.push(runtimeDir)
-      addPlugin(resolve(runtimeDir, 'plugin'))
-    }
-  }
-})
+});
