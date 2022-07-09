@@ -23,7 +23,6 @@ jobs:
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - uses: google-github-actions/release-please-action@v3
-        with:
-          release-type: node
-          package-name: "@logotip4ik_/nuxt-cloudflare-headers"
+      - run: npx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
