@@ -8,6 +8,7 @@ import defaultsDeep from "defaults-deep";
 
 import { name, version } from "../package.json";
 import { ModuleOptions } from "./types";
+import { getStorageKey } from "./runtime/utils";
 
 const logger = useLogger("cloudflare-headers");
 
@@ -39,9 +40,9 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.hook("nitro:build:before", async (nitroConfig) => {
       // NOTE: just a name wont work, unstorage just will not create an item with such a key
       // the name must have some prefix
-      const cacheKey = `cache:${name}`;
+      const key = getStorageKey();
 
-      await nitroConfig.storage.setItem(cacheKey, headers);
+      await nitroConfig.storage.setItem(key, headers);
     });
 
     nuxt.hook("nitro:config", (nitroConfig) => {

@@ -1,4 +1,7 @@
 import { ModuleOptions } from "../types";
+import { name } from "../../package.json";
+
+export const getStorageKey = () => `cache:${name}`;
 
 export function stringify(obj: ModuleOptions) {
   let result = "";
