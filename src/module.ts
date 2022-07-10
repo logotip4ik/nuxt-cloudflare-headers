@@ -32,8 +32,9 @@ export default defineNuxtModule<ModuleOptions>({
 
     // This enables to import `stringify` function from `#utils` and `name` from `package.json`
     nuxt.options.alias = nuxt.options.alias || {};
-    nuxt.options.alias["#utils"] = resolve("./runtime/utils");
-    nuxt.options.alias["#package"] = resolve("../package");
+    // prettier-ignore
+    nuxt.options.alias["#cloudflare-headers/utils"] = resolve("./runtime/utils");
+    nuxt.options.alias["#cloudflare-headers/package"] = resolve("../package");
 
     nuxt.hook("nitro:build:before", async (nitroConfig) => {
       // NOTE: just a name wont work, unstorage just will not create an item with such a key
