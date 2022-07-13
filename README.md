@@ -1,4 +1,4 @@
-# Nuxt3 Cloudflare Headers
+# ☁ Nuxt3 Cloudflare Headers
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
