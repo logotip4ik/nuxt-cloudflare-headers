@@ -17,14 +17,42 @@ const tests: { data: ModuleOptions; result: string }[] = [
     },
     result: "/*\n\theader: header\n/api/*\n\tx-powered-by: jest",
   },
+  {
+    data: { "/*": [{ "some-cool": false }] },
+    result: "/*\n\t! some-cool",
+  },
 ];
 
 describe("Main stringify function", () => {
-  test("Generation of the header strings", () => {
-    for (const test of tests) {
-      const headerString = stringify(test.data);
+  test("Generation of one rule for one route", () => {
+    const test = tests[0];
 
-      expect(headerString).toEqual(test.result);
-    }
+    const headerString = stringify(test.data);
+
+    expect(headerString).toEqual(test.result);
+  });
+
+  test("Generation of multiple rules for one route", () => {
+    const test = tests[1];
+
+    const headerString = stringify(test.data);
+
+    expect(headerString).toEqual(test.result);
+  });
+
+  test("Generation of one rule for multiple routes", () => {
+    const test = tests[2];
+
+    const headerString = stringify(test.data);
+
+    expect(headerString).toEqual(test.result);
+  });
+
+  test("Generation of one disallow rule for one route", () => {
+    const test = tests[3];
+
+    const headerString = stringify(test.data);
+
+    expect(headerString).toEqual(test.result);
   });
 });
