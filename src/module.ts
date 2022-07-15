@@ -12,6 +12,8 @@ import { getStorageKey } from "./runtime/utils";
 
 const logger = useLogger("cloudflare-headers");
 
+export * from "./types";
+
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name,
