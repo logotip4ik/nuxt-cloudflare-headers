@@ -64,16 +64,22 @@ export default defineNuxtConfig({
 
   cloudflareHeaders: {
     "/*": [{ "some-cool": "header" }],
+    "/admin": [{ "some-cool": false }], // detaching `some-cool` header from admin route
   },
 });
 ```
 
-In `cloudflareHeaders` object key `/*` will be route matcher and array or objects will be actual header rules. Where `some-cool` will be header name and `header` will be header value. So if you are generating your project with such a config, nuxt will prerender `_headers` file with this content inside:
+In `cloudflareHeaders` object key (`/*`, `/admin`) will be route matcher and array or objects will be actual header rules. Where `some-cool` will be header name and `header` will be header value. Also you can detach a header from route by providing `false` as value. So if you are generating your project with such a config, nuxt will prerender `_headers` file with this content inside:
 
 ```text
 /*
   some-cool: header
+
+/admin
+  ! some-cool
 ```
+
+> For more features read [cloudflare docs about `_headers` file](https://developers.cloudflare.com/pages/platform/headers)
 
 ## Development
 
