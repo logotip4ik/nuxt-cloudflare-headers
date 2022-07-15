@@ -13,6 +13,8 @@ export function stringify(obj: ModuleOptions) {
     result += headers.reduce((acc, header) => {
       const [headerName, headerValue] = Object.entries(header)[0];
 
+      if (headerValue === false) return acc + `\n\t! ${headerName}`;
+
       return acc + `\n\t${headerName}: ${headerValue}`;
     }, "");
   }
