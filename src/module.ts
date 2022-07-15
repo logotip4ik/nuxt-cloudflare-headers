@@ -1,9 +1,4 @@
-import {
-  defineNuxtModule,
-  createResolver,
-  resolveModule,
-  useLogger,
-} from "@nuxt/kit";
+import { defineNuxtModule, createResolver, resolveModule, useLogger } from "@nuxt/kit";
 import defaultsDeep from "defaults-deep";
 
 import { name, version } from "../package.json";
@@ -35,7 +30,6 @@ export default defineNuxtModule<ModuleOptions>({
 
     // This enables to import `stringify` function from `#utils` and `name` from `package.json`
     nuxt.options.alias = nuxt.options.alias || {};
-    // prettier-ignore
     nuxt.options.alias["#cloudflare-headers/utils"] = resolve("./runtime/utils");
     nuxt.options.alias["#cloudflare-headers/package"] = resolve("../package");
 
