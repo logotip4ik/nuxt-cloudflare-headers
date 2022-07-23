@@ -1,5 +1,5 @@
 import { defineNuxtModule, createResolver, resolveModule, useLogger } from "@nuxt/kit";
-import defaultsDeep from "defaults-deep";
+import defaultsDeep from "@logotip4ik_/defaults-deep";
 
 import { name, version } from "../package.json";
 import { ModuleOptions } from "./types";
