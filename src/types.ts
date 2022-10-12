@@ -14,7 +14,4 @@ export interface ModuleOptions {
    * }
    */
   [key: string]: Header[];
-
-  "/"?: Header[];
-  "/*"?: Header[];
 }
