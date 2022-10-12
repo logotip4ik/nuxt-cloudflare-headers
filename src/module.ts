@@ -14,7 +14,7 @@ export default defineNuxtModule<ModuleOptions>({
     name,
     version,
     configKey: "cloudflareHeaders",
-    compatibility: { nuxt: "^3.0.0" },
+    compatibility: { nuxt: "^3.0.0-rc.10" },
   },
   defaults: () => ({}),
   setup(options = {}, nuxt) {
