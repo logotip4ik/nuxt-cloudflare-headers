@@ -3,8 +3,6 @@ import { defineEventHandler } from "h3";
 // @ts-ignore
 import { stringify, getStorageKey } from "#cloudflare-headers/utils";
 // @ts-ignore
-import { name } from "#cloudflare-headers/package";
-// @ts-ignore
 import { useStorage } from "#internal/nitro";
 
 export default defineEventHandler(async ({ res }) => {
