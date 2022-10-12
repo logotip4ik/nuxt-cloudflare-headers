@@ -5,6 +5,6 @@ export default defineNuxtConfig({
   modules: [cloudflareHeaders],
 
   cloudflareHeaders: {
-    "/*": [{ "some-cool": "header " }],
+    "/*": [{ "some-cool": "header " }, { header: false }],
   },
 });
