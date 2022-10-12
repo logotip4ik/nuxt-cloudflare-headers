@@ -29,7 +29,7 @@
     "url": "https://github.com/logotip4ik/nuxt-cloudflare-headers"
   },
   "dependencies": {
-    "@logotip4ik_/defaults-deep": "^0.1.2",
+    "@logotip4ik_/defaults-deep": "^0.1.3",
     "@nuxt/kit": "^3.0.0-rc.4"
   },
   "devDependencies": {
