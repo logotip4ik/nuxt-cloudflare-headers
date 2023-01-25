@@ -31,7 +31,7 @@ import cloudflareHeaders from "@logotip4ik_/nuxt-cloudflare-headers";
 export default defineNuxtConfig({
   modules: [
     // With inlined options
-    [cloudflareHeaders, { "/api": [{ "x-powered-by": "cloudflare" }] }],
+    [cloudflareHeaders, { "/api": { "x-powered-by": "cloudflare" } }],
   ],
 });
 ```
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   modules: [cloudflareHeaders],
 
   cloudflareHeaders: {
-    "/*": [{ "some-cool": "header" }],
+    "/*": { "some-cool": "header" },
   },
 });
 ```
@@ -63,17 +63,18 @@ export default defineNuxtConfig({
   modules: [cloudflareHeaders],
 
   cloudflareHeaders: {
-    "/*": [{ "some-cool": "header" }],
-    "/admin": [{ "some-cool": false }], // detaching `some-cool` header from admin route
+    "/*": { "some-cool": "header", "hello": "world" },
+    "/admin": { "some-cool": false }, // detaching `some-cool` header from admin route
   },
 });
 ```
 
-In `cloudflareHeaders` object key (`/*`, `/admin`) will be route matcher and array or objects will be actual header rules. Where `some-cool` will be header name and `header` will be header value. Also you can detach a header from route by providing `false` as value. So if you are generating your project with such a config, nuxt will prerender `_headers` file with this content inside:
+In `cloudflareHeaders` object key (`/*`, `/admin`) will be route matcher and array of objects or plain object will be actual header rules. Where `some-cool` will be header name and `header` will be header value. Also you can detach a header from route by providing `false` as value. So if you are generating your project with such a config, nuxt will prerender `_headers` file with this content inside:
 
 ```text
 /*
   some-cool: header
+  hello: world
 
 /admin
   ! some-cool
