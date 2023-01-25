@@ -15,11 +15,15 @@ const tests: { data: ModuleOptions; result: string }[] = [
       "/*": [{ header: "header" }],
       "/api/*": [{ "x-powered-by": "jest" }],
     },
-    result: "/*\n\theader: header\n/api/*\n\tx-powered-by: jest",
+    result: "/*\n\theader: header\n\n/api/*\n\tx-powered-by: jest",
   },
   {
     data: { "/*": [{ "some-cool": false }] },
     result: "/*\n\t! some-cool",
+  },
+  {
+    data: { "/*": { "some-cool": false, hello: "world" } },
+    result: "/*\n\t! some-cool\n\thello: world",
   },
 ];
 
@@ -50,6 +54,14 @@ describe("Main stringify function", () => {
 
   test("Generation of one disallow rule for one route", () => {
     const test = tests[3];
+
+    const headerString = stringify(test.data);
+
+    expect(headerString).toEqual(test.result);
+  });
+
+  test("Should correctly generate headers even with object syntax", () => {
+    const test = tests[4];
 
     const headerString = stringify(test.data);
 

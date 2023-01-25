@@ -8,14 +8,19 @@ export function stringify(obj: ModuleOptions) {
 
   for (const [host, headers] of Object.entries(obj)) {
     if (!result) result += host;
-    else result += `\n${host}`;
+    else result += `\n\n${host}`;
 
-    result += headers.reduce((acc, header) => {
-      const [headerName, headerValue] = Object.entries(header)[0];
+    const normalizedHeaders = Array.isArray(headers) ? headers : [headers];
 
-      if (headerValue === false) return acc + `\n\t! ${headerName}`;
+    result += normalizedHeaders.reduce((acc, header) => {
+      let headers = "";
 
-      return acc + `\n\t${headerName}: ${headerValue}`;
+      for (const [headerName, headerValue] of Object.entries(header)) {
+        if (headerValue === false) headers += `\n\t! ${headerName}`;
+        else headers += `\n\t${headerName}: ${headerValue}`;
+      }
+
+      return acc + headers;
     }, "");
   }
 
