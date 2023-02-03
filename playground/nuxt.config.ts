@@ -1,4 +1,3 @@
-import { defineNuxtConfig } from "nuxt";
 import cloudflareHeaders from "..";
 
 export default defineNuxtConfig({
